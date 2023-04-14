@@ -1,0 +1,562 @@
+/* Generic */
+:root {
+  --tinkerblocks-color-foreground: hsl(240, 6%, 97%);
+  --tinkerblocks-color-foreground-lowlight: hsl(0, 0%, 89%);
+
+  --tinkerblocks-color-background: hsl(216, 10%, 20%);
+  --tinkerblocks-color-background-highlight: hsl(210, 11%, 26%);
+  --tinkerblocks-color-background-lowlight: hsl(214, 9%, 15%);
+
+  --tinkerblocks-color-button: hsl(240, 6%, 7%);
+  --tinkerblocks-color-button-hover: hsl(220, 5%, 12%);
+  --tinkerblocks-color-button-active: hsl(214, 9%, 15%);
+
+  --tinkerblocks-color-red: hsl(353, 89%, 39%);
+  --tinkerblocks-color-blue: hsl(212, 69%, 54%);
+  --tinkerblocks-color-blue-highlight: hsl(212, 86%, 61%);
+  --tinkerblocks-color-orange: hsl(32, 100%, 46%);
+  --tinkerblocks-color-black: hsl(210, 9%, 4%);
+
+  --tinkerblocks-zelos-foreground: hsl(0, 6%, 94%);
+
+  --tinkerblocks-border-radius: 6px;
+  --tinkerblocks-border-round-radius: 50px;
+
+  --tinkerblocks-transition: .15s;
+
+  --border-width: 2px;
+  --border-radius: 6px;
+
+  --border-round-radius: 50px;
+
+  --transition: .2s ease-in-out;
+}
+
+:root {
+  --color-foreground: hsl(240, 6%, 97%);
+  --color-foreground-lowlight: hsl(240, 6%, 85%);
+  --color-foreground-subtitle: hsl(0, 0%, 64%);
+
+  --color-background: hsl(216, 10%, 20%);
+  --color-background-highlight: hsl(210, 11%, 26%);
+  --color-background-lowlight: hsl(214, 9%, 15%);
+  
+  --color-button: hsl(220, 6%, 10%);
+  --color-button-hover: hsl(220, 5%, 12%);
+  --color-button-active: hsl(214, 9%, 15%);
+
+  --color-orange: hsl(32, 100%, 46%);
+  --color-orange-highlight: hsl(32, 100%, 55%);
+
+  --color-red: hsl(2, 74%, 50%);
+  --color-red-highlight: hsl(2, 94%, 56%);
+
+  --color-blue: hsl(212, 69%, 54%);
+  --color-blue-highlight: hsl(212, 86%, 61%);
+  --color-blue-lowlight: hsl(212, 50%, 40%);
+
+  --color-green: hsl(82, 79%, 35%);
+  --color-green-highlight: hsl(82, 85%, 38%);
+  --color-green-lowlight: hsl(82, 67%, 25%);
+  
+  --color-purple: hsl(283, 35%, 44%);
+  --color-purple-highlight: hsl(282, 37%, 53%);
+
+  --border-width: 2px;
+  --border-radius: 6px;
+
+  --border-round-radius: 50px;
+
+  --transition: .2s ease-in-out;
+}
+// @font-face {
+//   font-family: 'IBM Plex Sans';
+//   font-style: normal;
+//   font-weight: 400;
+//   src: url('./assets/webfonts/IBMPlexSans-Regular.ttf');
+// }
+
+// @font-face {
+//   font-family: 'IBM Plex Sans';
+//   font-style: italic;
+//   font-weight: 400;
+//   src: url('./assets/webfonts/IBMPlexSans-Italic.ttf');
+// }
+
+// @font-face {
+//   font-family: 'IBM Plex Sans';
+//   font-style: normal;
+//   font-weight: 600;
+//   src: url('./assets/webfonts/IBMPlexSans-SemiBold.ttf');
+// }
+
+// @font-face {
+//   font-family: 'IBM Plex Mono';
+//   font-style: normal;
+//   font-weight: 400;
+//   src: url('./assets/webfonts/IBMPlexMono-Regular.ttf');
+// }
+
+// @font-face {
+//   font-family: 'IBM Plex Mono';
+//   font-style: normal;
+//   font-weight: 700;
+//   src: url('./assets/webfonts/IBMPlexMono-Bold.ttf');
+// }
+.blocklyHidden {
+  display: none !important;
+}
+
+.blocklyScrollbarHandle {
+  fill: var(--tinkerblocks-color-background);
+  fill-opacity: 0.6;
+  transition: fill var(--tinkerblocks-transition);
+}
+
+.blocklyScrollbarBackground:hover + .blocklyScrollbarHandle,
+.blocklyScrollbarHandle:hover {
+  fill: var(--tinkerblocks-color-background-highlight);
+}
+
+/* Workspace */
+
+.blocklySvg {
+  background-color: transparent;
+}
+
+// .blocklyMainWorkspaceScrollbar .blocklyScrollbarHandle {
+//   fill: var(--tinkerblocks-color-button);
+// }
+
+// .blocklyMainWorkspaceScrollbar .blocklyScrollbarBackground:hover + .blocklyScrollbarHandle,
+// .blocklyMainWorkspaceScrollbar .blocklyScrollbarHandle:hover {
+//   fill: var(--tinkerblocks-color-button-hover);
+// }
+
+.blocklyMainWorkspaceScrollbar {
+  display: none;
+}
+
+.injectionDiv.hideScrollbars .blocklyMainWorkspaceScrollbar {
+  display: none;
+}
+
+.blocklyMainBackground {
+  stroke: none;
+  cursor: move;
+}
+
+/* Bubble UI */
+
+.blocklyBubbleText {
+  fill: var(--tinkerblocks-zelos-foreground) !important;
+  text-shadow: none !important;
+}
+
+foreignObject,
+.blocklyBubbleCanvas svg,
+.blocklyBlockDragSurface svg {
+  border-radius: 2px;
+}
+
+.blocklyMutatorBackground {
+  fill: var(--tinkerblocks-color-background-highlight);
+  stroke: none;
+}
+
+.blocklyCommentTextarea {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 3px 6px 0 6px;
+  font-size: 0.8rem;
+  color: var(--tinkerblocks-color-foreground);
+  background: var(--tinkerblocks-color-button);
+}
+
+.blocklyResizeSE {
+  fill: transparent;
+}
+
+.blocklyResizeLine {
+  stroke: var(--tinkerblocks-color-button);
+  stroke-linecap: round;
+}
+
+/* Context Menu */
+
+.blocklyWidgetDiv .blocklyMenu.blocklyContextMenu {
+  padding: 0;
+  background: var(--tinkerblocks-color-button);
+  border: 2px solid var(--tinkerblocks-color-button-active);
+  border-radius: var(--tinkerblocks-border-radius);
+  font-size: 1rem;
+  box-shadow: none;
+}
+
+.blocklyMenu.blocklyContextMenu .blocklyMenuItem {
+  padding: 1rem 1rem;
+  color: var(--tinkerblocks-color-foreground);
+  transition: background-color var(--tinkerblocks-transition);
+}
+
+.blocklyMenu.blocklyContextMenu .blocklyMenuItemHighlight {
+  background-color: var(--tinkerblocks-color-button-hover);
+}
+
+.blocklyMenuItemDisabled {
+  color: var(--tinkerblocks-color-foreground-lowlight) !important;
+  cursor: not-allowed;
+}
+
+/* Dropdown Menu */
+
+.blocklyDropDownDiv {
+  background-color: var(--tinkerblocks-color-button);
+  border: 2px solid var(--tinkerblocks-color-button-active);
+  border-radius: var(--tinkerblocks-border-radius);
+  box-shadow: none !important;
+}
+
+.blocklyMenu.blocklyDropdownMenu {
+  font-size: 1rem;
+  border-radius: 0;
+  margin-right: 3px;
+}
+
+.blocklyMenu.blocklyDropdownMenu .blocklyMenuItem {
+  min-width: 0;
+  padding-left: 38px;
+  color: var(--tinkerblocks-color-foreground);
+  border-radius: 2px;
+  transition: background-color var(--tinkerblocks-transition);
+}
+
+.blocklyMenu.blocklyDropdownMenu .blocklyMenuItemHighlight {
+  background-color: var(--tinkerblocks-color-button-hover);
+}
+
+.blocklyMenuItemSelected {
+  background-color: var(--tinkerblocks-color-blue) !important;
+}
+
+.blocklyMenuItemSelected .blocklyMenuItemCheckbox {
+  width: 18px;
+  height: 18px;
+  background: none;
+  background-image: url(./../assets/img/check.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-top: 2px;
+}
+
+.blocklyMenuItemContent{
+  padding-right: 10px;
+}
+/* Blocks */
+
+.blocklyText {
+  fill: var(--tinkerblocks-color-foreground);
+  text-shadow: var(--tinkerblocks-color-background-lowlight) 0px 0px 1px;
+}
+
+.blocklyEditableText .blocklyText.blocklyDropdownText {
+  fill: var(--tinkerblocks-zelos-foreground) !important;
+}
+
+.blocklyEditableText > .blocklyText {
+  text-shadow: none;
+  pointer-events: none;
+}
+
+.blocklyEditableText:not(.editing) > rect {
+  transition: stroke-width var(--tinkerblocks-transition);
+}
+
+.blocklyWidgetDiv {
+  transition: box-shadow var(--tinkerblocks-transition);
+}
+
+.blocklyWidgetDiv input{
+  background-color: #fff;
+}
+
+.blocklyDropdownRect {
+  transition: stroke-opacity var(--tinkerblocks-transition);
+}
+
+.blocklyDraggable {
+  transition: fill-opacity var(--tinkerblocks-transition);
+  fill: red;
+}
+
+.blocklyDraggable g image {
+  user-select: none;
+  transition: opacity var(--tinkerblocks-transition);
+}
+
+.blocklyDisabled {
+  fill-opacity: 0.6;
+}
+
+.blocklyDisabled .blocklyDropdownRect {
+  stroke-opacity: 0.25;
+}
+
+.blocklyDisabled g image {
+  opacity: 0.6;
+}
+
+.blocklyHighlightedConnectionPath {
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.blocklyDisabled .blocklyOutlinePath {
+  fill: initial !important;
+  fill-opacity: 0.1;
+}
+
+.blocklyEditableText .blocklyFieldRect:not(.blocklyDropdownRect),
+g[data-id] > .blocklyPath[stroke][fill^="var"] {
+  cursor: text;
+  transition: stroke-width var(--tinkerblocks-transition);
+  filter: none;
+}
+
+.blocklyEditableText .blocklyFieldRect:hover,
+g[data-id] > .blocklyPath[stroke][fill^="var"]:hover {
+  stroke-width: 2;
+  
+}
+
+.blocklyPath{
+  filter: none;
+}
+/* Tooltips */
+
+.blocklyTooltipDiv {
+  color: var(--tinkerblocks-color-foreground);
+  background-color: var(--tinkerblocks-color-background-lowlight);
+  border: 2px solid var(--tinkerblocks-color-background);
+  border-radius: var(--tinkerblocks-border-radius);
+  box-shadow: none;
+  font: inherit;
+  opacity: 1;
+  padding: 0.5rem 0.8rem;
+}
+
+/* Icons */
+
+.blocklyIconGroup {
+  opacity: 1 !important;
+  cursor: pointer;
+}
+
+.blocklyIconShape {
+  fill: transparent;
+}
+
+/* Toolbox */
+
+.blocklyToolboxDiv {
+  padding: 0;
+  background-color: #3A3E5B;
+  z-index: 2;
+}
+
+.blocklyToolboxContents {
+  padding: 1rem 0;
+  opacity: 1;
+  transition: opacity var(--tinkerblocks-transition);
+
+  .operators {
+    background-image: url(./../assets/img/bool.png);
+  }
+  .control {
+    background-image: url(./../assets/img/control.png);
+  }
+  .maths {
+    background-image: url(./../assets/img/math.png);
+  }
+  .text {
+    background-image: url(./../assets/img/text.png);
+  }
+  .array {
+    background-image: url(./../assets/img/array.png);
+  }
+  .variable {
+    background-image: url(./../assets/img/variable.png);
+  }
+  .function {
+    background-image: url(./../assets/img/function.png);
+  }
+  .arduino {
+    background-image: url(./../assets/img/arduino.png);
+  }
+  .light {
+    background-image: url(./../assets/img/light.png);
+  }
+  .sensor {
+    background-image: url(./../assets/img/sensor.png);
+  }
+
+  .motors {
+    background-image: url(./../assets/img/motors.png);
+  }
+
+  .switch {
+    background-image: url(./../assets/img/switch.png);
+  }
+
+  .telecom {
+    background-image: url(./../assets/img/telecom.png);
+  }
+}
+
+.blocklyToolboxContents .blocklyToolboxCategory:first-of-type .blocklyTreeRow {
+  margin-top: 0;
+}
+
+.blocklyTreeRow {
+  height: 40px;
+  margin: 0.6rem 1rem 0 1rem;
+  padding-right: 14px;
+  background-color: var(--tinkerblocks-color-button);
+  border-radius: var(--tinkerblocks-border-round-radius);
+  border-left-width: 20px !important;
+  line-height: normal;
+  cursor: pointer;
+  transition: background-color var(--tinkerblocks-transition);
+}
+
+.blocklyTreeRow:not(.blocklyTreeSelected):hover {
+  background-color: var(--tinkerblocks-color-button-hover);
+}
+
+.blocklyTreeSeparator {
+  margin: calc(0.9rem + 2px) 0 calc(0.9rem - 0.6rem) 0;
+  border-bottom: 2px solid var(--tinkerblocks-color-background-lowlight);
+}
+
+.blocklyTreeRowContentContainer {
+  color: rgb(255, 255, 255);
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+}
+
+.blocklyTreeIcon {
+  display: none !important;
+}
+
+.customTreeIcon {
+  width: 25px;
+  height: 100%;
+  margin-left: 0.6rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.blocklyTreeLabel {
+  margin-left: 0.4rem;
+  font-family: "IBM Plex Sans";
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Flyout */
+
+.blocklyFlyoutBackground {
+  fill: var(--tinkerblocks-color-button);
+  fill-opacity: 1;
+}
+
+svg.blocklyFlyout .blocklyFlyoutBackground {
+  cursor: w-resize;
+}
+
+.blocklyFlyoutLabelText {
+  fill: var(--tinkerblocks-color-foreground) !important;
+  font-size: 1.2rem !important;
+}
+
+.blocklyFlyoutButton {
+  fill: var(--tinkerblocks-color-blue);
+  cursor: pointer;
+  transition: fill var(--tinkerblocks-transition);
+}
+
+.blocklyFlyoutButton:hover {
+  fill: var(--tinkerblocks-color-blue-highlight);
+}
+
+.blocklyFlyoutButtonShadow {
+  display: none;
+}
+
+.blocklyFlyout .blocklyDraggable * {
+  cursor: grab !important;
+  filter:none;
+}
+
+/* Deletion Icon */
+
+.blocklyDeletionIcon {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity var(--tinkerblocks-transition);
+}
+
+.blocklyDeletionIcon > span {
+  margin-top: 0.6rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  transition: opacity var(--tinkerblocks-transition);
+}
+
+.blocklyDeletionIcon.wouldDeleteBlock {
+  opacity: 1 !important;
+}
+
+.blocklyToolboxDiv.blocklyToolboxDelete > .blocklyToolboxContents {
+  opacity: 0;
+}
+
+.blocklyToolboxDiv.blocklyToolboxDelete > .blocklyToolboxContents * {
+  pointer-events: none !important;
+}
+
+.blocklyToolboxDiv.blocklyToolboxDelete > .blocklyDeletionIcon {
+  opacity: 0.4;
+}
+
+/* Media Queries */
+
+@media (pointer: coarse) {
+  .blocklyTreeRow {
+    height: 50px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-left-width: 25px !important;
+  }
+
+  .blocklyTreeSeparator {
+    margin: calc(15px + 2px) 0 calc(15px - 0.6rem) 0;
+  }
+}
+
+.blocklyFlyout {
+  position: absolute;
+  z-index: 1000;
+}

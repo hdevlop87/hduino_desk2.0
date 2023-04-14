@@ -1,0 +1,83 @@
+{
+  "private": true,
+  "name": "Hduino",
+  "description": "Hduino For Arduino",
+  "version": "1.0.0",
+  "author": "Hicham Jebara",
+  "main": "app/background.js",
+  "scripts": {
+    "dev": "nextron",
+    "build": "nextron build",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "@serialport/bindings-cpp": "^10.8.0",
+    "await-exec": "^0.1.2",
+    "clipboardy": "^3.0.0",
+    "delay": "^5.0.0",
+    "electron-devtools-installer": "^3.2.0",
+    "electron-log": "^4.4.8",
+    "electron-serve": "^1.1.0",
+    "electron-store": "^8.1.0",
+    "monaco-editor": "^0.36.1",
+    "react-icons": "^4.8.0",
+    "redux-devtools-extension": "^2.13.9",
+    "stream": "^0.0.2"
+  },
+  "devDependencies": {
+    "@iconify/react": "^4.0.1",
+    "@monaco-editor/react": "^4.4.6",
+    "@reduxjs/toolkit": "^1.9.1",
+    "@types/node": "18.11.10",
+    "@types/react": "18.0.31",
+    "@types/react-dom": "18.0.9",
+    "@uiw/react-monacoeditor": "^3.5.7",
+    "blockly": "^9.1.1",
+    "electron": "^21.3.3",
+    "electron-builder": "^23.6.0",
+    "eslint": "8.29.0",
+    "eslint-config-next": "13.0.6",
+    "eventemitter3": "^5.0.0",
+    "next": "^13.0.6",
+    "next-redux-wrapper": "^8.1.0",
+    "nextron": "^8.5.0",
+    "react": "^18.2.0",
+    "react-datepicker": "^4.8.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-spinners": "^0.13.8",
+    "redux-persist": "^6.0.0",
+    "sass": "^1.56.1",
+    "styled-components": "^5.3.6",
+    "swiper": "^9.1.1",
+    "typescript": "5.0.3",
+    "uuid": "^9.0.0",
+    "webpack": "^5.77.0",
+    "yup": "^0.32.11"
+  },
+  "build": {
+    "extraFiles": [
+      {
+        "from": "vs",
+        "to": "vs",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "compiler",
+        "to": "compiler",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "splashScreen",
+        "to": "splashScreen",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  }
+}
