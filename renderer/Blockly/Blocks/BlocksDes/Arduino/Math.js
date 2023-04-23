@@ -44,7 +44,6 @@ Blockly.Blocks['math_arithmetic'] = {
                 {
                     "type": "input_value",
                     "name": "A",
-                    "check": Blockly.Types.NUMBER.checkList
                 },
                 {
                     "type": "field_dropdown",
@@ -59,11 +58,10 @@ Blockly.Blocks['math_arithmetic'] = {
                 {
                     "type": "input_value",
                     "name": "B",
-                    "check": Blockly.Types.NUMBER.checkList
                 }
             ],
             "inputsInline": true,
-            "output": Blockly.Types.NUMBER.output,
+            "output": Blockly.Types.NUMBER,
             "colour": Blockly.Blocks.math.HUE,
             "helpUrl": Blockly.Msg.MATH_ARITHMETIC_HELPURL
         });

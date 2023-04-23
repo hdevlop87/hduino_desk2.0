@@ -43,7 +43,7 @@ Blockly.Blocks['Ultrasonic_read'] = {
             .appendField(new Blockly.FieldImage('/img/ico/ultrason_ico.png', 60, 30, { alt: "*", flipRtl: "FALSE" }))
             .appendField('Distance Of')
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.onlyVar), 'PIN')
-        this.setOutput(true, Blockly.Types.NUMBER);
+            this.setOutput(true, "Number");
         this.setTooltip(Blockly.Msg.ARD_DIGITALREAD_TIP);
     },
     getBlockType: function () {
@@ -75,7 +75,7 @@ Blockly.Blocks["SENSOR_dht11"] = {
             .appendField(new Blockly.FieldDropdown([["Humidity", "h"], ["Temperature", "t"]]), "choix")
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.AllPins), 'PIN')
             .appendField(Blockly.Msg.pin);
-        this.setOutput(true, Blockly.Types.NUMBER);
+        this.setOutput(true, "Number");
         this.setTooltip("returns moisture (from 0 to 100%) temperature (from 0 to 80 degrees Celsius) received by the sensor")
     },
     updateFields: function () {
@@ -103,7 +103,7 @@ Blockly.Blocks["SENSOR_lm35"] = {
             .appendField(new Blockly.FieldImage('/img/ico/lm35_ico.png', 32, 50))
             .appendField("temperature of ")
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.AllPins), 'PIN')
-        this.setOutput(true, Blockly.Types.NUMBER);
+            this.setOutput(true, "Number");
         this.setTooltip(Blockly.Msg.lm35_2)
     },
     getBlockType: function () {
@@ -121,13 +121,16 @@ Blockly.Blocks["SENSOR_light_sensor"] = {
         this.appendDummyInput()
             .appendField(new Blockly.FieldImage('/img/ico/ldr_ico.png', 40, 40))
             .appendField("daylight In ")
-            .appendField(new Blockly.FieldDropdown(Blockly.Arduino.AllPins), 'PIN')
-        this.setOutput(true, Blockly.Types.NUMBER);
+            .appendField(new Blockly.FieldDropdown(Blockly.Arduino.AllPinsAnalog), 'PIN')
+            this.setOutput(true, "Number");
         this.setTooltip("returns a value based on brightness: darkness:full light")
     },
     updateFields: function () {
         Blockly.Arduino.Boards.refreshBlockFieldDropdown(this, 'PIN', 'AllPinsAnalog');
     },
+    getBlockType: function () {
+        return Blockly.Types.NUMBER;
+      }
 };
 //===================================================================================================//
 Blockly.Blocks["SENSOR_PIR"] = {
@@ -138,7 +141,7 @@ Blockly.Blocks["SENSOR_PIR"] = {
             .appendField(new Blockly.FieldImage('/img/ico/pir_ico.png', 40, 40))
             .appendField("Motion State In ")
             .appendField(new Blockly.FieldDropdown(Blockly.Arduino.AllPins), 'PIN')
-        this.setOutput(true, Blockly.Types.NUMBER);
+        this.setOutput(true, "Number");
         this.setTooltip("returns a value based on brightness: darkness:full light")
     },
     updateFields: function () {

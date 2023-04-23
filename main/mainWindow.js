@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events'
-import { BrowserWindow} from 'electron'
+import { BrowserWindow } from 'electron'
 
 
 class MainWindow extends EventEmitter {
@@ -24,17 +24,24 @@ class MainWindow extends EventEmitter {
         };
         this.isProd = isProd
 
-        this.initialize() 
+        this.initialize()
     }
 
     async initialize() {
-        this.window = new BrowserWindow(this.properties); 
+        this.window = new BrowserWindow(this.properties);
         this.window.webContents.on('did-finish-load', async () => {
-            
-            this.isReady = true;
             this.emit('ready');
-          });
-          await (this.isProd
+        });
+        this.window.webContents.on('before-input-event', (event, input) => {
+            if (input.key === 'F5') {
+              this.window.reload()
+            }
+
+            if (input.key === 'F6') {
+                this.window.webContents.openDevTools()
+              }
+          })
+        await (this.isProd
             ? this.window.loadURL('app://./')
             : this.window.loadURL(this.url));
     }
@@ -57,7 +64,7 @@ class MainWindow extends EventEmitter {
 
     show() {
         this.window.setMenuBarVisibility(false);
-        this.window.show(); 
+        this.window.show();
         this.window.maximize();
     }
 

@@ -25,7 +25,7 @@ const createWindow = async () => {
 
 
    mainWindow.on('ready', async () => {
-      await delay(3000);
+      await delay(2000);
       splashWindow.close();
       mainWindow.show();
    });

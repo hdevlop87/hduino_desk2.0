@@ -5,13 +5,13 @@ import { H3, H6 } from '../../styles';
 import Button from '../../components/Buttons'
 import { setDialog } from '../../features/dialogSlice'
 import { setContext } from '../../features/contextSlice';
-import { selectProject } from '../../features/projectsSlice';
+import { selectProject,loadProject } from '../../features/projectsSlice';
 
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import robot from '../../assets/img/robots/robot2.png'
-import { FaChevronDown,FaFileImport,FaFileMedical } from 'react-icons/fa';
+import { FaChevronDown, FaFileImport, FaFileMedical } from 'react-icons/fa';
 
 
 const Projects = () => {
@@ -45,6 +45,10 @@ const Projects = () => {
       }))
    }
 
+   const load = () => {
+      dispatch(loadProject())
+   }
+
 
    const startProg = (id) => {
       router.push({ pathname: '/platform' });
@@ -69,15 +73,16 @@ const Projects = () => {
 
             <ButtonContainer>
                <Button
+                  onClick={() => dispatch(loadProject())}
                   rounded
-                  Licon={<FaFileImport/>}
+                  Licon={<FaFileImport />}
                   size='md'
                   bg='purple_normal'>Import project</Button>
 
                <Button
-                  onClick={addProject}
+                  onClick={() => addProject()}
                   rounded
-                  Licon={<FaFileMedical/>}
+                  Licon={<FaFileMedical />}
                   size='md'
                   bg='orange_normal'>New Project</Button>
             </ButtonContainer>

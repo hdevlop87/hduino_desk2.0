@@ -16,6 +16,31 @@ export const Container = styled.div`
     gap:4px;
 `;
 
+export const ButtonCopy = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:2px solid #7c7f97;
+    border-radius:8px;
+    padding:4px;
+    margin-right:16px;
+    width:80px;
+    cursor:pointer;
+
+    & label{
+        cursor:pointer;
+        min-width:0
+    }
+
+    :hover{
+        border:2px solid #323232;
+    }
+
+    :active{
+        transform:scale(0.95)
+    }
+`;
+
 export const Tab = styled.div`
     height: 38px;
     border-top-left-radius: 7px;

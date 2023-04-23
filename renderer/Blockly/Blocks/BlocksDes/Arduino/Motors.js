@@ -28,8 +28,28 @@ Blockly.Blocks["motor_servo_write"] = {
     this.appendDummyInput().appendField(new Blockly.FieldImage("/img/ico/motorServo_ico.png", 140, 40, {alt: "*",flipRtl: "FALSE",}));
     this.appendDummyInput()
       .appendField(new Blockly.FieldDropdown(Blockly.Arduino.onlyVar), 'VAR')
-      .appendField(" Rotate ")
-      .appendField(new Blockly.FieldAngle("90"), "DEG");
+      .appendField("Rotate")
+      .appendField(new Blockly.FieldDropdown([
+          ["fix", "FIXED_ANGLE"],
+          ["var", "VARIABLE"]
+        ], function(option) {
+          // Callback function to handle option change
+          var angleInput = this.getSourceBlock().getField("ANGLE");
+          var angleVarInput = this.getSourceBlock().getField("ANGLE_VAR");
+          if (option == "FIXED_ANGLE") {
+            angleInput.setVisible(true);
+            angleVarInput.setVisible(false);
+          } else {
+            angleInput.setVisible(false);
+            angleVarInput.setVisible(true);
+          }
+        }), "ANGLE_TYPE")
+      .appendField(new Blockly.FieldAngle("90"), "ANGLE")
+      .appendField(new Blockly.FieldDropdown(Blockly.Arduino.onlyVar), 'ANGLE_VAR')
+      
+    // Initially hide the FieldVariable input
+    this.getField("ANGLE_VAR").setVisible(false);
+
     this.setColour(Colors.motors.primary);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -41,18 +61,6 @@ Blockly.Blocks["motor_servo_write"] = {
   },
   updateFields: function () {
     Blockly.Arduino.Boards.refreshBlockFieldDropdown(this, 'VAR', 'onlyVar');
-  },
-  blockCreated: function (workspace) {
-    let Arr = workspace.getBlocksByType('motor_servo_init');
-    if (Arr.length == 0) {
-      let baseBeginBlock = workspace.getBlocksByType('base_begin')[0];
-      var connection = baseBeginBlock.getInput('base_begin').connection;
-      let UltrasonicInit = workspace.newBlock('motor_servo_init', 'motor_servo_init');
-      UltrasonicInit.initSvg();
-      UltrasonicInit.render();
-      connection.connect(UltrasonicInit.previousConnection);
-      connection = UltrasonicInit.nextConnection;
-    }
   },
 };
 //======================================================================//

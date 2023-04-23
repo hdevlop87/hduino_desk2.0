@@ -8,18 +8,21 @@ import chip from '../../assets/img/chip.png'
 import save from '../../assets/img/save.png'
 import tickmark from '../../assets/img/tick-mark.png'
 import { useRouter } from 'next/router'
-import { setBoardModal, setCodeModal, setPortModal, setCompilerModal } from '../../features/navBarSlice'
-import { verifyCode, uploadCode, saveProject,getTitle } from '../../features/projectsSlice'
 import { Container, HomeButton, ArduinoButton, EditorControl, MyImage, TitleContainer } from './NavBarPlatform.styled';
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { Fs_base } from '../../styles'
-import { BiDotsVerticalRounded} from 'react-icons/bi';
+
+import { verifyCode, uploadCode, saveProject, getTitle, getProjectID } from '../../features/projectsSlice'
+import { setBoardModal, setCodeModal, setPortModal } from '../../features/navBarSlice'
+import { setContext } from '../../features/contextSlice';
 
 const NavBarPlatform = () => {
    const router = useRouter();
    const dispatch = useDispatch();
 
    const title = useSelector(getTitle);
+   const ID = useSelector(getProjectID);
 
    return (
       <Container>
@@ -30,7 +33,11 @@ const NavBarPlatform = () => {
             </MyImage>
             <TitleContainer>
                <Fs_base>{title}</Fs_base>
-               <BiDotsVerticalRounded size={22}/>
+               <BiDotsVerticalRounded size={22} onClick={() => dispatch(setContext({
+                  title: title,
+                  id: ID
+               }))}
+               />
             </TitleContainer>
          </HomeButton>
 

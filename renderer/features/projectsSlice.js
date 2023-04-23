@@ -34,6 +34,41 @@ export const saveProject = createAsyncThunk("project/saveProject",
          return rejectWithValue(message);
       }
    });
+//==================================================================//
+//====================== load Projects =============================//
+export const loadProject = createAsyncThunk("project/loadProject",
+    async (_, thunkAPI) => {
+        const { rejectWithValue, dispatch, getState } = thunkAPI;
+        try {
+           let { message } = dispatch(await asyncEmit('loadProject'));
+
+           const { id, ...messageWithoutId } = message;
+
+           dispatch(addProject());
+           
+           const newProject = getState().projects.list.slice(-1)[0];
+           const newProjectId = newProject.id;
+           
+           dispatch(updateProject({
+              id: newProjectId,
+              ...messageWithoutId
+            }));
+            
+            dispatch(setAlert({
+               message: 'Project loaded from ' + message.filePath,
+               type: 'success'
+            }));
+
+            return messageWithoutId;
+
+        } catch ({ message }) {
+            dispatch(setAlert({
+                message: message,
+                type: 'error'
+            }));
+            return rejectWithValue(message);
+        }
+    });
 //===============================================================//
 //====================== verifyCode =============================//
 export const verifyCode = createAsyncThunk("project/verifyCode",
@@ -78,47 +113,47 @@ export const verifyCode = createAsyncThunk("project/verifyCode",
       }
    });
 
-   //===============================================================//
+//===============================================================//
 //====================== verifyCode =============================//
 export const uploadCode = createAsyncThunk("project/uploadCode",
-async (_, thunkAPI) => {
-   const { rejectWithValue, getState, dispatch } = thunkAPI;
-   let project = getProject(getState());
-
-   dispatch(setCompilerModal({
-      show: true,
-      loading: true,
-   }));
-
-   try {
-      let { message } = dispatch(await asyncEmit('uploadCode', project));
+   async (_, thunkAPI) => {
+      const { rejectWithValue, getState, dispatch } = thunkAPI;
+      let project = getProject(getState());
 
       dispatch(setCompilerModal({
          show: true,
-         loading: false,
-         message: {
-            show: true,
-            label: message,
-            type: 'warning'
-         }
+         loading: true,
       }));
 
-      return message
-   }
-   catch ({ message }) {
+      try {
+         let { message } = dispatch(await asyncEmit('uploadCode', project));
 
-      dispatch(setCompilerModal({
-         show: true,
-         loading: false,
-         message: {
+         dispatch(setCompilerModal({
             show: true,
-            label: message,
-            type: 'error'
-         }
-      }));
-      return rejectWithValue(message);
-   }
-});
+            loading: false,
+            message: {
+               show: true,
+               label: message,
+               type: 'warning'
+            }
+         }));
+
+         return message
+      }
+      catch ({ message }) {
+
+         dispatch(setCompilerModal({
+            show: true,
+            loading: false,
+            message: {
+               show: true,
+               label: message,
+               type: 'error'
+            }
+         }));
+         return rejectWithValue(message);
+      }
+   });
 //==================================================================//
 //==================================================================//
 
@@ -187,12 +222,12 @@ export const getProject = createSelector(
 
 export const getCode = createSelector(
    [getProject],
-   project => project ? project.code : null 
+   project => project ? project.code : null
 );
 
 export const getTitle = createSelector(
    [getProject],
-   project => project ? project.title : null 
+   project => project ? project.title : null
 );
 
 export const { addProject, removeProject, updateProject, selectProject } = projectsSlice.actions;

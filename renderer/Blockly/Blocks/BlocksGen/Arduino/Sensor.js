@@ -67,7 +67,7 @@ Blockly.Arduino["SENSOR_line_follower"] = function (block) {
 //===================================================================================================//
 Blockly.Arduino["SENSOR_light_sensor"] = function (block) {
     var pin = block.getFieldValue('PIN');
-    Blockly.Arduino.variables_['var_' + pin] = 'int LDRValue_' + pin + ';';
+    Blockly.Arduino.variables_['var_' + pin] = `int LDRValue_${pin} = 0;`
     Blockly.Arduino.loopCode_['var1' + pin] = `LDRValue_${pin} = analogRead(${pin});`;
     var code = `LDRValue_${pin}`;
     return [code, Blockly.Arduino.ORDER_ATOMIC]

@@ -15,6 +15,7 @@ export default class arduino {
     registerEventHandlers() {
         const eventHandlers = [
             { eventName: 'saveExternal', handler: this.saveProject.bind(this) },
+            { eventName: 'loadProject', handler: this.loadProject.bind(this) },
             { eventName: 'verifyCode', handler: this.verifyCode.bind(this) },
             { eventName: 'uploadCode', handler: this.uploadCode.bind(this) },
             { eventName: 'getPorts', handler: this.getPorts.bind(this) },
@@ -147,5 +148,43 @@ export default class arduino {
         });
 
         return folder;
+    }
+
+    async loadProject() {
+        console.log('filePath');
+        const filePath = await this.showOpenDialog();
+        if (filePath) {
+            const fileContent = await this.readFileContent(filePath);
+            const projectData = JSON.parse(fileContent);
+            return projectData;
+        }
+        throw new Error('Load canceled');
+    }
+
+    async showOpenDialog() {
+        const options = {
+            title: 'Open Arduino Project',
+            defaultPath: app.getPath('documents'),
+            buttonLabel: 'Open Project',
+            filters: [
+                { name: 'Arduino Project', extensions: ['json'] },
+            ],
+            properties: ['openFile']
+        };
+
+        const result = await dialog.showOpenDialog(options);
+        return result.filePaths.length > 0 ? result.filePaths[0] : null;
+    }
+
+    async readFileContent(filePath) {
+        return new Promise((resolve, reject) => {
+            fs.readFile(filePath, 'utf-8', (err, data) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(data);
+                }
+            });
+        });
     }
 }

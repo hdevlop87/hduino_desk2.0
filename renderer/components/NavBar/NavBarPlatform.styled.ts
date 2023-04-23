@@ -51,7 +51,7 @@ export const MyImage = styled.div`
 export const TitleContainer = styled.div`
     background-color:black;
     border-radius:15px;
-    width:130px;
+    min-width:130px;
     height:40px;
     display:flex;
     gap:8px;
@@ -64,6 +64,10 @@ export const TitleContainer = styled.div`
         font-size: 16px;
         margin-left:5px;
         min-width: 20px !important;
+    }
+
+    & svg{
+        cursor:pointer
     }
 
 `;

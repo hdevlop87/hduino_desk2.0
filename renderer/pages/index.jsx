@@ -7,11 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import robot from '../assets/img/robots/robot2.png'
-import { FaChevronDown,FaFileImport,FaFileMedical } from 'react-icons/fa';
+import { FaChevronDown, FaFileImport, FaFileMedical } from 'react-icons/fa';
 
 import { setDialog } from '../features/dialogSlice'
 import { setContext } from '../features/contextSlice';
-import { selectProject,getProjects } from '../features/projectsSlice';
+import { selectProject, getProjects, loadProject } from '../features/projectsSlice';
+
+import miniLogo from '../assets/img/miniLogo.png';
 
 
 const Projects = () => {
@@ -54,6 +56,10 @@ const Projects = () => {
 
    return (
       <>
+         <LogoContainer>
+            <Image src={miniLogo} alt="logo" />
+            <Title>HDUINO</Title>
+         </LogoContainer>
 
          <Container>
             <H3 bold>My Projects</H3>
@@ -69,15 +75,16 @@ const Projects = () => {
 
             <ButtonContainer>
                <Button
+                  onClick={() => dispatch(loadProject())}
                   rounded
-                  Licon={<FaFileImport/>}
+                  Licon={<FaFileImport />}
                   size='md'
                   bg='purple_normal'>Import project</Button>
 
                <Button
                   onClick={addProject}
                   rounded
-                  Licon={<FaFileMedical/>}
+                  Licon={<FaFileMedical />}
                   size='md'
                   bg='orange_normal'>New Project</Button>
             </ButtonContainer>
@@ -91,6 +98,23 @@ Projects.layout = basicLayout;
 
 export default Projects
 
+export const LogoContainer = styled.div`
+      padding:8px 16px;
+    display:flex;
+    align-items: center;
+    gap:8px;
+`;
+
+export const Title = styled.p`
+    font-family: 'LuckiestGuy';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 0;
+    color: #7366FF;
+    padding-top: 4px;
+    -webkit-text-stroke: 1.5px #FFFFFF;
+`;
 
 
 const Container = styled.div`

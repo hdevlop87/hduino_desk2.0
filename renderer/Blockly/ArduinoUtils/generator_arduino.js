@@ -220,7 +220,7 @@ Blockly.Arduino.finish = function (code) {
   delete Blockly.Arduino.pins_;
   Blockly.Arduino.nameDB_.reset();
 
-  var allDefs = includes.join('\n') + variables.join('\n') + definitions.join('\n') + functions.join('\n\n');
+  var allDefs = includes.join('\n') + variables.join('\n') 
   var setup = 'void setup() {\n' + setups.join('\n') + '\n}\n\n';
   var loop = 'void loop() {\n  ' + loopCode.join('\n  ') + loops.replace(/\n/g, '\n  ') + '\n}\n\n';
   return allDefs + setup + loop;

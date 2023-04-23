@@ -12,8 +12,15 @@ Blockly.Arduino["motor_servo_init"] = function (block) {
 //======================================================================//
 Blockly.Arduino["motor_servo_write"] = function (block) {
   var varName = block.getFieldValue("VAR");
-  var Deg = block.getFieldValue("DEG");
-  var code = `${varName}.write(${Deg});\n`;
+  var angleType = block.getFieldValue("ANGLE_TYPE");
+  var code;
+  if (angleType === "FIXED_ANGLE") {
+    var angle = block.getFieldValue("ANGLE");
+    code = `${varName}.write(${angle});\n`;
+  } else {
+    var angleVar = block.getFieldValue("ANGLE_VAR")|| "90";
+    code = `${varName}.write(${angleVar});\n`; 
+  }
   return code;
 };
 //======================================================================//
