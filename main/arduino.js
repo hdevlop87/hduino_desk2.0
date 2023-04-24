@@ -3,14 +3,13 @@ import path from 'path';
 import { app, dialog, ipcMain,clipboard  } from 'electron';
 import exec from 'await-exec';
 import SerialPort from './SerialPort';
-
+import os from 'os';
 
 export default class arduino {
     constructor() {
         this.isSaved = null;
         this.registerEventHandlers();
     }
-
 
     registerEventHandlers() {
         const eventHandlers = [
@@ -44,52 +43,55 @@ export default class arduino {
     }
     //===================================================================================================//
 
-    async verifyCode(data) {
-        const { filePath, compilerFlag } = data;
-
-        if (!this.isFoder(filePath)) {
-            throw new Error("project dont exist save First");
-        }
-
-        this.writeDataToFile(filePath, data);
-
-        let pathCompiler = this.getAbsolutePath().replace('\\resources\\app.asar', '');
-
-        if (filePath) {
-            try {
-                const cmd = `arduino-cli.exe compile --fqbn ${compilerFlag} ${filePath} --output-dir ${filePath}`;
-                const { stdout } = await exec(cmd, { cwd: `${pathCompiler}\\compiler` });
-                return stdout
-            } catch (error) {
-                const { stderr } = error;
-                throw new Error(stderr)
+    async execCommand(cmd) {
+        try {
+            let pathCompiler = this.getAbsolutePath().replace('\\resources\\app.asar', '');
+            const { stdout, stderr } = await exec(cmd, { cwd: `${pathCompiler}\\compiler` });
+            if (stderr) {
+                throw new Error(stderr);
             }
+            return stdout;
+        } catch (error) {
+            const { stderr } = error;
+            throw new Error(stderr);
         }
     }
 
-    async uploadCode(data) {
-        const { filePath, compilerFlag } = data;
+    createTempFolder() {
+        const tempFolderPath = path.join(os.tmpdir(), `arduino-temp`);
+        fs.mkdirSync(tempFolderPath, { recursive: true }); 
+        return tempFolderPath;
+    }
+
+    async prepareAndExecuteCommand(data, commandType) {
+        let { filePath, compilerFlag } = data;
 
         if (!this.isFoder(filePath)) {
-            throw new Error("project dont exist save First");
+            filePath = this.createTempFolder();
+            data.title = 'arduino-temp';
         }
-
         this.writeDataToFile(filePath, data);
-
-        let pathCompiler = this.getAbsolutePath().replace('\\resources\\app.asar', '');
-
-        if (filePath) {
-            try {
-                let cmd = `arduino-cli upload --verbose -p ${data.port} --fqbn ${compilerFlag} ${filePath}`;
-                const { stderr } = await exec(cmd, { cwd: `${pathCompiler}\\compiler ` });
-                console.log(stderr);
-                return stderr
-            } catch (error) {
-                const { stderr } = error;
-                throw new Error(stderr)
-            }
+        let cmd
+        if (commandType === 'verify') {
+            cmd = `arduino-cli.exe compile --fqbn ${compilerFlag} ${filePath} --output-dir ${filePath}`;
+        }
+        else if (commandType === 'upload') {
+            cmd = `arduino-cli upload --verbose -p ${data.port} --fqbn ${compilerFlag} ${filePath}`;
+        } 
+        else {
+            throw new Error('Invalid command type');
         }
 
+        return await this.execCommand(cmd);
+    }
+
+    async verifyCode(data) {
+        return await this.prepareAndExecuteCommand(data, 'verify');
+
+    }
+
+    async uploadCode(data) {
+        return await this.prepareAndExecuteCommand(data, 'upload');
     }
 
     //===================================================================================================//
@@ -118,13 +120,16 @@ export default class arduino {
     }
 
     async showSaveDialog() {
+
+        const defaultPath = app.getPath('documents') ;
+    
         const options = {
             title: 'Save folder',
-            defaultPath: app.getPath('documents'),
+            defaultPath: defaultPath,
             buttonLabel: 'Save Arduino Project',
             properties: ['openDirectory', 'createDirectory']
         };
-
+    
         const result = await dialog.showOpenDialog(options);
         return result.filePaths.length > 0 ? result.filePaths[0] : null;
     }
@@ -151,7 +156,6 @@ export default class arduino {
     }
 
     async loadProject() {
-        console.log('filePath');
         const filePath = await this.showOpenDialog();
         if (filePath) {
             const fileContent = await this.readFileContent(filePath);

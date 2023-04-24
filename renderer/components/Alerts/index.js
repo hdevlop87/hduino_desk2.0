@@ -55,7 +55,7 @@ const Container = styled.div`
     transform: translate(-50%, 0);
     right: 0;
     z-index: 9999;
-
+    color:white;
     
     justify-content: space-between;
     align-items: center;
@@ -99,6 +99,7 @@ const listIcons = {
 const MyIcon = styled(Icon).attrs(props => ({
     icon: listIcons[props.type]
 }))`
+    color:white;
     font-size: 22px;
     margin-right: 8px; 
     cursor:pointer;

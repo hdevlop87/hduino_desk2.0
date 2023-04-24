@@ -1,16 +1,16 @@
 
 import Blockly from 'blockly';
-Blockly.Msg={};
+Blockly.Msg = {};
 
 Blockly.Msg.ARRAY_CREATE_EMPTY_TITLE = 'empty!';
-Blockly.Msg.tab_create="create element block for array %1'";
-Blockly.Msg.tab_create_fix="create block 'set element in array %1 to'";
-Blockly.Msg.ARRAY_CREATE_WITH="set with";
-Blockly.Msg.ARRAY_taille="size";
-Blockly.Msg.ARRAY_contenu="contain";
-Blockly.Msg.ARRAY_dim="size of ";
-Blockly.Msg.ARRAY_index="index";
-Blockly.Msg._AT= "to";
+Blockly.Msg.tab_create = "create element block for array %1'";
+Blockly.Msg.tab_create_fix = "create block 'set element in array %1 to'";
+Blockly.Msg.ARRAY_CREATE_WITH = "set with";
+Blockly.Msg.ARRAY_taille = "size";
+Blockly.Msg.ARRAY_contenu = "contain";
+Blockly.Msg.ARRAY_dim = "size of ";
+Blockly.Msg.ARRAY_index = "index";
+Blockly.Msg._AT = "to";
 Blockly.Msg.ARRAY_CREATE_WITH = "created with";
 Blockly.Msg.ARRAY_CREATE_WITH_CONTAINER_TITLE_ADD = "array";
 Blockly.Msg.ARRAY_CREATE_WITH_CONTAINER_TOOLTIP = "Add, remove, or reorder sections to reconfigure this array block.";
@@ -25,9 +25,9 @@ Blockly.Msg.ARRAY_GETINDEX_AT2 = "index";
 Blockly.Msg.ARRAY_GETINDEX_HELPURL = "";
 Blockly.Msg.ARRAY_GETINDEX_ITEM = "in Array";
 Blockly.Msg.ARRAY_GETINDEX_TOOLTIP = "";
-Blockly.Msg.ARRAY_GETINDEX_TOOLTIP1="retourne la valeur stockée dans la liste ou tableau";
-Blockly.Msg.ARRAY_GETINDEX_TOOLTIP2="créé une liste ou tableau du type sélectionné";
-Blockly.Msg.ARRAY_GETINDEX_TOOLTIP3="fixe un (ou plusieurs) élément(s) de la liste ou tableau à la (aux) valeur(s) indiquée(s)";
+Blockly.Msg.ARRAY_GETINDEX_TOOLTIP1 = "retourne la valeur stockée dans la liste ou tableau";
+Blockly.Msg.ARRAY_GETINDEX_TOOLTIP2 = "créé une liste ou tableau du type sélectionné";
+Blockly.Msg.ARRAY_GETINDEX_TOOLTIP3 = "fixe un (ou plusieurs) élément(s) de la liste ou tableau à la (aux) valeur(s) indiquée(s)";
 Blockly.Msg.ARRAY_CREATE = "define ";
 Blockly.Msg.ARRAY_TAILLE = "size";
 Blockly.Msg.ARRAY_CONTIENT = "with";
@@ -60,7 +60,7 @@ Blockly.Msg.CONTROLS_SWITCH_TOOLTIP_3 = "If the first value is true, then do the
 Blockly.Msg.CONTROLS_SWITCH_TOOLTIP_4 = "If the first value is true, then do the first block of statements. Otherwise, if the second value is true, do the second block of statements. If none of the values are true, do the last block of statements.";
 Blockly.Msg.CONTROLS_SWITCH_VAR_TOOLTIP = "Drag from the left into here to add";
 Blockly.Msg.CONTROLS_SWITCH_CASEBREAK_TOOLTIP = "Add additional case break do";
-Blockly.Msg.CONTROLS_SWITCH_DEFAULT_TOOLTIP ="Add optional default action";
+Blockly.Msg.CONTROLS_SWITCH_DEFAULT_TOOLTIP = "Add optional default action";
 
 Blockly.Msg.TEXT_CHAR_TOOLTIP = "character value that takes up 1 byte of memory";
 Blockly.Msg.TEXT_CHAR_HELPURL = "https://www.arduino.cc/reference/en/language/variables/data-types/string/";
@@ -69,9 +69,12 @@ Blockly.Msg.TEXT_COMPARE_STRING_TEXT = "Comparison of the two chains: ";
 Blockly.Msg.TEXT_COMPARE_STRING_TEXT2 = " = ";
 Blockly.Msg.TEXT_COMPARE_STRING_TOOLTIP = "Lets you know if two strings are identical or not.";
 
+Blockly.Msg.TEXT_LENGTH_TITLE = "length of %1",
+Blockly.Msg.TEXT_ISEMPTY_TITLE = "%1 is empty",
 
-//july 9th function from JP Fontaine workspace
-Blockly.Msg.PROCEDURES_DEFRETURN_FUNCTION = "for function";
+
+    //july 9th function from JP Fontaine workspace
+    Blockly.Msg.PROCEDURES_DEFRETURN_FUNCTION = "for function";
 Blockly.Msg.PROCEDURES_DEFRETURN_TYPE = "type";
 
 Blockly.Msg.VARIABLES_AS = "as";
@@ -102,7 +105,7 @@ Blockly.Msg.FIELDDROPDOWN = [["HIGH", "HIGH"], ["LOW", "LOW"]];
 Blockly.Msg.FIELDDROPDOWN_ONOFF = [["ON", "ON"], ["OFF", "OFF"]];
 Blockly.Msg.FIELDDROPDOWN_0_1 = [["HAUT", "HIGH"], ["BAS", "LOW"]];
 Blockly.Msg.ligne = [["1", "1"], ["2", "2"]];
-Blockly.Msg.colonne = [["1", "1"],["2", "2"],["3", "3"],["4", "4"],["5", "5"],["6", "6"],["7", "7"],["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["14", "14"],["14", "14"],["15", "15"],["16", "16"]];
+Blockly.Msg.colonne = [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"], ["11", "11"], ["12", "12"], ["14", "14"], ["14", "14"], ["15", "15"], ["16", "16"]];
 Blockly.Msg.FIELDDROPDOWN_av_ar = [["avant", "HIGH"], ["arrière", "LOW"]];
 Blockly.Msg.INOUT_HIGH_LEVEL = "1 -> HIGH";
 Blockly.Msg.INOUT_LOW_LEVEL = "0 -> low";
@@ -146,8 +149,8 @@ Blockly.Msg.ARDUINO_SINCE_PROGRAM_STARTED_SEC = "time (in s) since program start
 Blockly.Msg.ARDUINO_SINCE_PROGRAM_STARTED_TOOLTIP = "Number of milliseconds since the program started (unsigned long)";
 Blockly.Msg.ARDUINO_BETWEEN = "random number between";
 Blockly.Msg.ARDUINO_BETWEEN_AND = "and";
-Blockly.Msg.ARDUINO_BASE_MAP_HELPURL ="http://arduino.cc/en/Reference/map";
-Blockly.Msg.ARDUINO_BASE_MAP_NUM ="to the transposed ";
+Blockly.Msg.ARDUINO_BASE_MAP_HELPURL = "http://arduino.cc/en/Reference/map";
+Blockly.Msg.ARDUINO_BASE_MAP_NUM = "to the transposed ";
 Blockly.Msg.ARDUINO_BASE_MAP_DMAX = "over a range of [0-";
 Blockly.Msg.ARDUINO_BASE_MAP_TOOLTIP = "transfer a value on a scale from 0 to 1023 to another scale";
 Blockly.Msg.ARDUINO_BASE_CODE = "Coding";
@@ -166,7 +169,7 @@ Blockly.Msg.ARDUINO_BASE_BEGIN_TOOLTIP = "help to show start and end of a progra
 Blockly.Msg.ARDUINO_BASE_BEGIN = "START program";
 Blockly.Msg.ARDUINO_BASE_TEMPO1 = "when";
 Blockly.Msg.ARDUINO_BASE_TEMPO2 = "elapsed";
-Blockly.Msg.ARDUINO_BASE_TEMPO_TIME = [["microsecondes", "us"],["millisecondes", "ms"],["secondes", "s"]];
+Blockly.Msg.ARDUINO_BASE_TEMPO_TIME = [["microsecondes", "us"], ["millisecondes", "ms"], ["secondes", "s"]];
 Blockly.Msg.ARDUINO_BASE_TEMPO_TOOLTIP = "Verify if interval of time is elapsed, if so do instructions.";
 Blockly.Msg.ARDUINO_BASE_TEMPO_HELPURL = "http://www.mon-club-elec.fr/pmwiki_reference_arduino/pmwiki.php?n=Main.ExempleBlinkWithoutDelay";
 Blockly.Msg.ARDUINO_BASE_TOGGLE = "toggle PIN state";
@@ -219,8 +222,8 @@ Blockly.Msg.ARDUINO_INOUT_STATE = "state";
 Blockly.Msg.ARDUINO_INOUT_ANGLE = "angle";
 Blockly.Msg.ARDUINO_INOUT_ANGLE_TOOLTIP = "angle entre 0 et 360°";
 Blockly.Msg.ARDUINO_INOUT_ANGLE_HELPURL = "https://developers.google.com/blockly/guides/create-custom-blocks/fields/built-in-fields/angle";
-Blockly.Msg.ARDUINO_PULSEIN="PulseIn (µs) pin#";
-Blockly.Msg.ARDUINO_PULSEIN_TIMEOUT="timeout (µs) ";
+Blockly.Msg.ARDUINO_PULSEIN = "PulseIn (µs) pin#";
+Blockly.Msg.ARDUINO_PULSEIN_TIMEOUT = "timeout (µs) ";
 Blockly.Msg.ARDUINO_SERVO_MOVE_HELPURL = "http://www.arduino.cc/playground/ComponentLib/servo";
 Blockly.Msg.ARDUINO_SERVO_MOVE_INPUT1 = "Rotate the Servo motor";
 Blockly.Msg.ARDUINO_SERVO_MOVE_IMAGE = "images/a991.jpg";
@@ -265,46 +268,46 @@ Blockly.Msg.LKL_MODE = 'mode';
 Blockly.Msg.LKL_DROPDOWN = [['RISING', "RISING"], ['FALLING', "FALLING"], ['CHANGE', "CHANGE"], ['LOW', "LOW"]];
 
 //SERIAL
-Blockly.Msg.Serial_Init="Serial communication init speed";
-Blockly.Msg.Serial_Print="Serial Print console";
-Blockly.Msg.Serial_Write="Serial write";
-Blockly.Msg.Serial_write_out="Write";
-Blockly.Msg.Serial_Print_Format="Print  Format";
-Blockly.Msg.Serial_Print_ForDecimal="decimal";
-Blockly.Msg.Serial_Print_ForHexa="hexadecimal";
-Blockly.Msg.Serial_Print_ForBin="binary";
-Blockly.Msg.Serial_Print_ForOct="octal";
-Blockly.Msg.Serial_read="Serial Read";
-Blockly.Msg.Serial_avai="Serial Available?";
-Blockly.Msg.Serial_flush="Serial flush";
-Blockly.Msg.Serial_line="line break";
-Blockly.Msg.Serial_line_tooltip="insert a line break in serial monitor";
+Blockly.Msg.Serial_Init = "Serial communication init speed";
+Blockly.Msg.Serial_Print = "Serial Print console";
+Blockly.Msg.Serial_Write = "Serial write";
+Blockly.Msg.Serial_write_out = "Write";
+Blockly.Msg.Serial_Print_Format = "Print  Format";
+Blockly.Msg.Serial_Print_ForDecimal = "decimal";
+Blockly.Msg.Serial_Print_ForHexa = "hexadecimal";
+Blockly.Msg.Serial_Print_ForBin = "binary";
+Blockly.Msg.Serial_Print_ForOct = "octal";
+Blockly.Msg.Serial_read = "Serial Read";
+Blockly.Msg.Serial_avai = "Serial Available?";
+Blockly.Msg.Serial_flush = "Serial flush";
+Blockly.Msg.Serial_line = "line break";
+Blockly.Msg.Serial_line_tooltip = "insert a line break in serial monitor";
 Blockly.Msg.ARDUINO_SERIAL_READSTRINGUNTIL_HELPURL = "https://www.arduino.cc/en/Serial/ReadStringUntil";
 Blockly.Msg.ARDUINO_SERIAL_READSTRINGUNTIL_CONTENT = "String read until";
 Blockly.Msg.ARDUINO_SERIAL_READSTRINGUNTIL_TOOLTIP = "reads characters from the serial buffer into a string";
 
 //SOFTWARE SERIAL
-Blockly.Msg.SSERIAL_DEFAULT_NAME="SoftSerial";
-Blockly.Msg.SSERIAL_Init="INIT";
-Blockly.Msg.SSERIAL_SPEED="speed";
-Blockly.Msg.SSERIAL_TX="TX#";
-Blockly.Msg.SSERIAL_RX="RX#";
-Blockly.Msg.SSERIAL_Read="SoftwareSerial Read";
-Blockly.Msg.SSERIAL_Print="SoftwareSerial Print";
-Blockly.Msg.SSERIAL_Write="SoftwareSerial Write";
-Blockly.Msg.SSERIAL_Avai="SoftwareSerial Available?";
+Blockly.Msg.SSERIAL_DEFAULT_NAME = "SoftSerial";
+Blockly.Msg.SSERIAL_Init = "INIT";
+Blockly.Msg.SSERIAL_SPEED = "speed";
+Blockly.Msg.SSERIAL_TX = "TX#";
+Blockly.Msg.SSERIAL_RX = "RX#";
+Blockly.Msg.SSERIAL_Read = "SoftwareSerial Read";
+Blockly.Msg.SSERIAL_Print = "SoftwareSerial Print";
+Blockly.Msg.SSERIAL_Write = "SoftwareSerial Write";
+Blockly.Msg.SSERIAL_Avai = "SoftwareSerial Available?";
 
 //VARIABLES
-Blockly.Msg.ARDUINO_VAR_DECLARE="Declare";
-Blockly.Msg.ARDUINO_VAR_AS="as";
-Blockly.Msg.ARDUINO_VAR_VAL="value";
+Blockly.Msg.ARDUINO_VAR_DECLARE = "Declare";
+Blockly.Msg.ARDUINO_VAR_AS = "as";
+Blockly.Msg.ARDUINO_VAR_VAL = "value";
 
 //Conversions
-Blockly.Msg.CONV_tochar="Convert to char ";
-Blockly.Msg.CONV_tobyte="Convert to Byte ";
-Blockly.Msg.CONV_toint="Convert to Int ";
-Blockly.Msg.CONV_tofloat="Convert to Float ";
-Blockly.Msg.CONV_toString="Convert to String ";
+Blockly.Msg.CONV_tochar = "Convert to char ";
+Blockly.Msg.CONV_tobyte = "Convert to Byte ";
+Blockly.Msg.CONV_toint = "Convert to Int ";
+Blockly.Msg.CONV_tofloat = "Convert to Float ";
+Blockly.Msg.CONV_toString = "Convert to String ";
 Blockly.Msg.CONVERSION_MAP_HELPURL = "https://www.arduino.cc/en/Reference/Map";
 Blockly.Msg.CONVERSION_MAP_NUM = "re-maps value";
 Blockly.Msg.CONVERSION_MAP_IN_MIN = "from low";

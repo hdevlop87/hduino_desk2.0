@@ -44,6 +44,7 @@ const listIcons = {
 export const MyIcon = styled(Icon).attrs(props => ({
     icon: listIcons[props.type]
 }))`
+    
     font-size: 22px;
     margin-right: 8px; 
 `;

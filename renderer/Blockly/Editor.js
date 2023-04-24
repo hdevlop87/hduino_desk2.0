@@ -32,6 +32,8 @@ class Editor {
       this.loadVars()
       this.loadXML();
 
+      Hduino.workspace.setScale(0.9)
+
       const categories = Hduino.workspace.toolbox_.getToolboxItems()
       categories.forEach(category => {
          if (category.isCollapsible()) {

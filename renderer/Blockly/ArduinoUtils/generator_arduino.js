@@ -184,6 +184,7 @@ Blockly.Arduino.finish = function (code) {
   for (var name in Blockly.Arduino.userFunctions_) {
     functions.push(Blockly.Arduino.userFunctions_[name]);
   }
+
   if (functions.length) {
     functions.push('\n');
   }
@@ -220,7 +221,7 @@ Blockly.Arduino.finish = function (code) {
   delete Blockly.Arduino.pins_;
   Blockly.Arduino.nameDB_.reset();
 
-  var allDefs = includes.join('\n') + variables.join('\n') 
+  var allDefs = includes.join('\n') + definitions.join('\n') + variables.join('\n') + functions.join('\n');
   var setup = 'void setup() {\n' + setups.join('\n') + '\n}\n\n';
   var loop = 'void loop() {\n  ' + loopCode.join('\n  ') + loops.replace(/\n/g, '\n  ') + '\n}\n\n';
   return allDefs + setup + loop;
@@ -269,9 +270,9 @@ Blockly.Arduino.addFunction = function (preferedName, code) {
   if (Blockly.Arduino.codeFunctions_[preferedName] === undefined) {
     var uniqueName = Blockly.Arduino.nameDB_.getDistinctName(
       preferedName, Blockly.Generator.NAME_TYPE);
-    Blockly.Arduino.codeFunctions_[preferedName] =
+      Blockly.Arduino.codeFunctions_[preferedName] =
       code.replace(Blockly.Arduino.DEF_FUNC_NAME, uniqueName);
-    Blockly.Arduino.functionNames_[preferedName] = uniqueName;
+      Blockly.Arduino.functionNames_[preferedName] = uniqueName;
   }
   return Blockly.Arduino.functionNames_[preferedName];
 };

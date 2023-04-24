@@ -2,6 +2,7 @@
 
 import  Blockly from 'blockly/core'; 
 import '../../../ArduinoUtils/generator_arduino'
+import { log } from 'console';
 //============================================================================================================//
 Blockly.Arduino['text'] = function (block) {
     var code = Blockly.Arduino.quote_(block.getFieldValue('TEXT'));
@@ -57,9 +58,9 @@ Blockly.Arduino['text_isEmpty'] = function (block) {
     func.push('    return false;');
     func.push('  }');
     func.push('}');
-    var funcName = Blockly.Arduino.addFunction('isStringEmpty', func.join('\n'));
-    var argument0 = Blockly.Arduino.valueToCode(block, 'VALUE',
-        Blockly.Arduino.ORDER_UNARY_POSTFIX);
+    var funcName = Blockly.Arduino.addFunction('dfg', func.join('\n'));
+
+    var argument0 = Blockly.Arduino.valueToCode(block, 'VALUE',Blockly.Arduino.ORDER_UNARY_POSTFIX);
     if (argument0 == '') {
         argument0 = '""';
     } else {

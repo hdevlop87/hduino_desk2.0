@@ -183,26 +183,6 @@
             "contents": [
                 {
                     "kind": "block",
-                    "type": "array_declare"
-                },
-                {
-                    "kind": "block",
-                    "type": "array_modify"
-                },
-                {
-                    "kind": "block",
-                    "type": "creer_tableau"
-                },
-                {
-                    "kind": "block",
-                    "type": "fixer_tableau"
-                },
-                {
-                    "kind": "block",
-                    "type": "tableau_getIndex"
-                },
-                {
-                    "kind": "block",
                     "type": "array_create_with"
                 },
                 {
