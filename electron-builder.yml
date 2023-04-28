@@ -1,6 +1,6 @@
-appId: com.example.nextron
-productName: My Nextron App
-copyright: Copyright © 2018 Yoshihide Shiono
+appId: .com.Hduino.For.Arduino
+productName: Hduino For Arduino
+copyright: Copyright © 2023 hicham jebara
 directories:
   output: dist
   buildResources: resources

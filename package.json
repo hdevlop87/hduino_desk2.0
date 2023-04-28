@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "Hduino",
+  "name": "hduino",
   "description": "Hduino For Arduino",
   "version": "1.0.0",
   "author": "Hicham Jebara",
@@ -57,6 +57,18 @@
     "yup": "^0.32.11"
   },
   "build": {
+    "win": {
+      "icon": "resources/icon.ico"
+    },
+    "fileAssociations": [
+      {
+        "ext": "hd",
+        "name": "Hduino Project File",
+        "description": "Hduino Project File",
+        "role": "Editor",
+        "icon": "resources/icon.ico"
+      }
+    ],
     "extraFiles": [
       {
         "from": "vs",

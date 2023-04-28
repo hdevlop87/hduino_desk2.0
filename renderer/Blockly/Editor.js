@@ -18,23 +18,23 @@ class Editor {
       Emitter.removeAllListeners();
       this.workspace_code = '';
       this.Variables = [];
-      this.project = {}
+      this.project = {};
    }
 
    async init() {
       this.hduino = new Hduino();
-      this.project = getProject(state())
+      this.project = getProject(state());
       await this.hduino.initialize();
       this.toolboxInit();
       this.onWorkspaceChange();
       this.setPromptDialog();
-      this.loadBoard()
-      this.loadVars()
+      this.loadBoard();
+      this.loadVars();
       this.loadXML();
 
       Hduino.workspace.setScale(0.9)
 
-      const categories = Hduino.workspace.toolbox_.getToolboxItems()
+      const categories = Hduino.workspace.toolbox_.getToolboxItems();
       categories.forEach(category => {
          if (category.isCollapsible()) {
             category.setExpanded(false);
@@ -54,19 +54,19 @@ class Editor {
 
    loadXML() {
       if (this.project && this.project.xml) {
-         Blockly.serialization.workspaces.load(this.project.xml, Hduino.workspace)
+         Blockly.serialization.workspaces.load(this.project.xml, Hduino.workspace);
       }
    }
 
    loadBoard() {
-      let compilerFlag = this.project.compilerFlag
+      let compilerFlag = this.project.compilerFlag;
       let pattern = /(?:^|\b)avr:(\w+)(?=$|\b)/;
       let board = compilerFlag.match(pattern)[1];
       Blockly.Arduino.Boards.changeBoard(Hduino.workspace, board);
    }
 
    getProject() {
-      this.project = getProject(state())
+      this.project = getProject(state());
    }
 
    setPromptDialog() {

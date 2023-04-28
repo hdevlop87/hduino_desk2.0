@@ -136,7 +136,7 @@ export default class arduino {
 
     async writeDataToFile(folder, data) {
         const fileName = data.title
-        const filePathPrj = path.join(folder, fileName + '.json');
+        const filePathPrj = path.join(folder, fileName + '.hd');
         const filePathINO = path.join(folder, fileName + '.ino');
         const filePathHex = path.join(folder, fileName + '.ino.hex');
         const jsonData = JSON.stringify(data, null, 2);
@@ -171,7 +171,7 @@ export default class arduino {
             defaultPath: app.getPath('documents'),
             buttonLabel: 'Open Project',
             filters: [
-                { name: 'Arduino Project', extensions: ['json'] },
+                { name: 'Arduino Project', extensions: ['hd'] },
             ],
             properties: ['openFile']
         };
