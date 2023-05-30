@@ -116,7 +116,7 @@ const List = styled.div`
     padding: 24px;
     gap: 24px;
     width: 500px;
-    height: 500px;
+    height: 400px;
     background: ${({ theme }) => theme.colors.background.paper};
     border-radius: 16px;
     overflow: overlay;

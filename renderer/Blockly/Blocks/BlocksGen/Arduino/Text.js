@@ -2,12 +2,17 @@
 
 import  Blockly from 'blockly/core'; 
 import '../../../ArduinoUtils/generator_arduino'
-import { log } from 'console';
+
 //============================================================================================================//
 Blockly.Arduino['text'] = function (block) {
     var code = Blockly.Arduino.quote_(block.getFieldValue('TEXT'));
     return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+Blockly.Arduino['simple_quote'] = function(block) {
+    var textValue = block.getFieldValue('TEXT');
+    var code = '\'' + textValue + '\'';
+    return [code, Blockly.Arduino.ORDER_ATOMIC];
+  };
 //============================================================================================================//
 Blockly.Arduino['Simpletext'] = function (block) {
     var TEXT = block.getFieldValue('TEXT')

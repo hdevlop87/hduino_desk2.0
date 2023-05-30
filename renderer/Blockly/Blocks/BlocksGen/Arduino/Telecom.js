@@ -44,13 +44,39 @@ Blockly.Arduino["bluetooth_receive_byte"] = function (block) {
 };
 //======================================================================//
 Blockly.Arduino['serial_write'] = function (block) {
-  // Append to a variable in place.
   var argument0 = Blockly.Arduino.valueToCode(block, 'SERIAL', Blockly.Arduino.ORDER_UNARY_POSTFIX);
-  return `Serial.write(${argument0});`
+  var actionType = block.getFieldValue('ACTION_TYPE');
+
+  switch (actionType) {
+    case 'write':
+      return `Serial.write(${argument0});\n`;
+
+    case 'print':
+      return `Serial.print(${argument0});\n`;
+
+    case 'println':
+      return `Serial.println(${argument0});\n`;
+
+    default:
+      throw 'Unknown action type: ' + actionType;
+  }
 };
 //======================================================================//
 Blockly.Arduino['bluetooth_write'] = function (block) {
-  // Append to a variable in place.
   var argument0 = Blockly.Arduino.valueToCode(block, 'BT', Blockly.Arduino.ORDER_UNARY_POSTFIX);
-  return `BT.write(${argument0});`
+  var actionType = block.getFieldValue('ACTION_TYPE');
+
+  switch (actionType) {
+    case 'write':
+      return `BT.write(${argument0});\n`;
+
+    case 'print':
+      return `BT.print(${argument0});\n`;
+
+    case 'println':
+      return `BT.println(${argument0});\n`;
+
+    default:
+      throw 'Unknown action type: ' + actionType;
+  }
 };

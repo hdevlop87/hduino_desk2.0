@@ -89,7 +89,7 @@ class Editor {
             const { show, data } = store.getState().dialog;
             if (!show) {
                resolve(data)
-               clear()
+               clear() 
             }
          })
       });

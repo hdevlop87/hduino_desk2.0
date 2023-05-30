@@ -27,6 +27,29 @@ Blockly.Blocks['text'] = {
     return Blockly.Types.TEXT;
   }
 };
+Blockly.Blocks['simple_quote'] = {
+  init: function () {
+    this.jsonInit({
+      "type": "simple_quote",
+      "message0": "\'%1\'",
+      "args0": [{
+        "type": "field_input",
+        "name": "TEXT",
+        "text": ""
+      }],
+      "output": "String",
+      "colour": Colors.Text.primary,
+      "helpUrl": Blockly.Msg.TEXT_TEXT_HELPURL,
+      "tooltip": Blockly.Msg.TEXT_TEXT_TOOLTIP,
+      "extensions": [
+        "parent_tooltip_when_inline"
+      ]
+    });
+  },
+  getBlockType: function () {
+    return Blockly.Types.TEXT;
+  }
+};
 //=====================================================//
 Blockly.Blocks['text_join'] = {
   init: function () {

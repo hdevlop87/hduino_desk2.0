@@ -2,6 +2,13 @@ import styled from 'styled-components';
 import { Fs_base } from '../../styles'
 import is from '../../utils/isStyled'
 
+
+export const DropdownWrapper = styled.div`
+  position: relative;
+  display: flex;
+  width:100%;
+`;
+
 export const InputContainer = styled.div`
     position: relative;
     display: flex;

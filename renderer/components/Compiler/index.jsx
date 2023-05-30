@@ -1,10 +1,10 @@
 import { setCompilerModal,compilerModal,compilerLoading,compilerShowMessage,compilerMessage,compilerType } from '../../features/navBarSlice'
 import { Container, VerifDiv, Label } from './VerifUpload.styled'
 import { useDispatch, useSelector } from "react-redux";
-import useOutsideClick from "../../Hooks/outsideClick";
 import React, { useRef } from 'react'
 import LoadingBar from './LoadingBar';
 
+import { useOnClickOutside } from 'usehooks-ts';
 
 const index = () => {
     const pRef = useRef(null);
@@ -27,13 +27,15 @@ const index = () => {
         }));
     };
 
-    useOutsideClick(pRef, handleClickOutside);
+
+
+    useOnClickOutside(pRef, handleClickOutside);
 
     return (
-        <Container show={showModal} ref={pRef}>
+        <Container show={showModal} >
             {showLoader && <LoadingBar />}
             {showMessage &&
-                <VerifDiv >
+                <VerifDiv ref={pRef} onClick={handleClickOutside}>
                     <Label  type={type}>{message}</Label>
                 </VerifDiv>}
         </Container>

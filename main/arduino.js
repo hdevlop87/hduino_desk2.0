@@ -5,7 +5,8 @@ import exec from 'await-exec';
 import SerialPort from './SerialPort';
 import os from 'os';
 
-export default class arduino {
+ 
+export default class arduino { 
     constructor() {
         this.isSaved = null;
         this.registerEventHandlers();

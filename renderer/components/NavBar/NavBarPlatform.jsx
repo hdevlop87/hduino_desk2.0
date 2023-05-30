@@ -16,6 +16,7 @@ import { Fs_base } from '../../styles'
 import { verifyCode, uploadCode, saveProject, getTitle, getProjectID } from '../../features/projectsSlice'
 import { setBoardModal, setCodeModal, setPortModal } from '../../features/navBarSlice'
 import { setContext } from '../../features/contextSlice';
+import {getPorts} from '../../features/portsSlice'
 
 const NavBarPlatform = () => {
    const router = useRouter();
@@ -51,7 +52,7 @@ const NavBarPlatform = () => {
          </ArduinoButton>
 
          <EditorControl>
-            <MyImage onClick={() => dispatch(setPortModal(true))}>
+            <MyImage onClick={() => {dispatch(setPortModal(true));dispatch(getPorts());}}>
                <Image src={vga} alt="logo" width={32} />
             </MyImage>
 

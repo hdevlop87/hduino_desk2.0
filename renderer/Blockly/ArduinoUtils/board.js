@@ -382,7 +382,7 @@ Blockly.Arduino.Boards.init = function (Variables, workspace) {
 
 Blockly.Arduino.Boards.changeBoard = (workspace, newBoard) => {
    if (Blockly.Arduino.Boards.profiles[newBoard] === undefined) {
-      console.log('Tried to set non-existing Arduino board: ' + newBoard);
+      // console.log('Tried to set non-existing Arduino board: ' + newBoard);
       return;
    }
    Blockly.Arduino.Boards.selected = Blockly.Arduino.Boards.profiles[newBoard];

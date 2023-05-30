@@ -13,7 +13,7 @@ export const Container = styled.div`
 `;
 
 export const Card = styled.div`
-    width: 400px;
+    width: 460px;
     background-color: ${({ theme }) => theme.colors.background.body};
     border-radius: 10px;
     display: flex;

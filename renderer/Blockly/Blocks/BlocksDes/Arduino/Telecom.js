@@ -61,7 +61,7 @@ Blockly.Blocks["serial_receive_byte"] = {
 //======================================================================//
 Blockly.Blocks['serial_write'] = {
   /**
-   * Block for appending to a variable in place.
+   * Block for serial communication.
    * @this Blockly.Block
    */
   init: function () {
@@ -69,15 +69,14 @@ Blockly.Blocks['serial_write'] = {
     this.setColour(Colors.telecom.primary);
     this.appendValueInput('SERIAL')
       .appendField(new Blockly.FieldImage('img/ico/serial.png', 60, 35))
-      .appendField("Serial Write")
+      .appendField(new Blockly.FieldDropdown([
+          ["Serial Write", "write"],
+          ["Serial Print", "print"],
+          ["Serial Println", "println"]
+      ]), "ACTION_TYPE")
     this.setPreviousStatement(true);
     this.setNextStatement(true);
 
-    var thisBlock = this;
-    this.setTooltip(function () {
-      return Blockly.Msg.TEXT_APPEND_TOOLTIP.replace('%1',
-        thisBlock.getFieldValue('VAR'));
-    });
   },
   getVarType: function (varName) {
     return Blockly.Types.TEXT;
@@ -114,16 +113,15 @@ Blockly.Blocks['bluetooth_write'] = {
     this.setHelpUrl(Blockly.Msg.TEXT_APPEND_HELPURL);
     this.setColour(Colors.telecom.primary);
     this.appendValueInput('BT')
-      .appendField(new Blockly.FieldImage('img/ico/Bluetooth.png', 35, 35))
-      .appendField("bluetooth Write")
+      .appendField(new Blockly.FieldImage('img/ico/bluetooth.png', 60, 35))
+      .appendField(new Blockly.FieldDropdown([
+          ["Bluetooth Write", "write"],
+          ["Bluetooth Print", "print"],
+          ["Bluetooth Println", "println"]
+      ]), "ACTION_TYPE")
     this.setPreviousStatement(true);
     this.setNextStatement(true);
 
-    var thisBlock = this;
-    this.setTooltip(function () {
-      return Blockly.Msg.TEXT_APPEND_TOOLTIP.replace('%1',
-        thisBlock.getFieldValue('VAR'));
-    });
   },
   getVarType: function (varName) {
     return Blockly.Types.TEXT;

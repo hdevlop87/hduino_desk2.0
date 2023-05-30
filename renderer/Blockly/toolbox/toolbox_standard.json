@@ -153,6 +153,10 @@
                 },
                 {
                     "kind": "block",
+                    "type": "simple_quote"
+                },
+                {
+                    "kind": "block",
                     "type": "text_join"
                 },
                 {

@@ -26,12 +26,19 @@ const SerialPort = () => {
         baudRate: 115200,
     });
 
-    useEffect(() => {
-        dispatch(getPorts())
-    }, [showModal])
+    const [portSettings, setPortSettings] = useState(JSon.portSetting);
+
 
     useEffect(() => {
-        JSon.portSetting[0].options = listPorts
+        dispatch(getPorts());
+    }, []);
+
+    useEffect(() => {
+        setPortSettings(prevSettings => {
+            let newSettings = [...prevSettings];
+            newSettings[0].options = listPorts;
+            return newSettings;
+        });
     }, [listPorts]);
 
     const confirm = () => {
@@ -56,8 +63,8 @@ const SerialPort = () => {
                     <Fs_base color='gray_Light_pressed'>Select Port</Fs_base>
                 </Title>
                 <Content>
-                    {
-                        JSon.portSetting.map((item, i) =>
+                {
+                        portSettings.map((item, i) =>
                             <Input
                                 key={i}
                                 label={item.label}
@@ -67,6 +74,7 @@ const SerialPort = () => {
                                 callback={value => handleChange(item.id, value)}
                                 LabelPos="left"
                                 outlined={true}
+                                onClick={() => dispatch(getPorts())}
                             />
                         )
                     }
