@@ -113,7 +113,7 @@ Blockly.Blocks['bluetooth_write'] = {
     this.setHelpUrl(Blockly.Msg.TEXT_APPEND_HELPURL);
     this.setColour(Colors.telecom.primary);
     this.appendValueInput('BT')
-      .appendField(new Blockly.FieldImage('img/ico/bluetooth.png', 60, 35))
+      .appendField(new Blockly.FieldImage('img/ico/Bluetooth.png', 60, 35))
       .appendField(new Blockly.FieldDropdown([
           ["Bluetooth Write", "write"],
           ["Bluetooth Print", "print"],
